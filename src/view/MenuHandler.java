@@ -13,22 +13,26 @@ public class MenuHandler {
 
     public void start() {
         while (true) {
-            showMenu();
-            switch (view.prompt("Ваш выбор: ")) {
-                case "1" -> comicController.addComic();
-                case "2" -> comicController.removeComic();
-                case "3" -> comicController.editComic();
-                case "4" -> comicController.sellComic();
-                case "5" -> comicController.reserveComic();
-                case "6" -> comicController.applyPromotion();
-                case "7" -> comicController.searchByAuthor();
-                case "8" -> comicController.searchByGenre();
-                case "9" -> comicController.listAllComics();
-                case "0" -> {
-                    view.showMessage("Выход из системы...");
-                    return;
+            try {
+                showMenu();
+                switch (view.prompt("Ваш выбор: ")) {
+                    case "1" -> comicController.addComic();
+                    case "2" -> comicController.removeComic();
+                    case "3" -> comicController.editComic();
+                    case "4" -> comicController.sellComic();
+                    case "5" -> comicController.reserveComic();
+                    case "6" -> comicController.applyPromotion();
+                    case "7" -> comicController.searchByAuthor();
+                    case "8" -> comicController.searchByGenre();
+                    case "9" -> comicController.listAllComics();
+                    case "0" -> {
+                        view.showMessage("Выход из системы...");
+                        return;
+                    }
+                    default -> view.showMessage("Неверный выбор.");
                 }
-                default -> view.showMessage("Неверный выбор.");
+            } catch (Exception e) {
+                view.showMessage("Ошибка выполнения операции: " + e.getMessage());
             }
         }
     }

@@ -63,4 +63,24 @@ public class ConsoleView {
     public void showComic(Comic comic) {
         System.out.println(comic);
     }
+
+    public int promptInt(String message) {
+        while (true) {
+            try {
+                return Integer.parseInt(prompt(message));
+            } catch (NumberFormatException e) {
+                showMessage("Пожалуйста, введите корректное целое число.");
+            }
+        }
+    }
+
+    public double promptDouble(String message) {
+        while (true) {
+            try {
+                return Double.parseDouble(prompt(message));
+            } catch (NumberFormatException e) {
+                showMessage("Пожалуйста, введите корректное число.");
+            }
+        }
+    }
 }
